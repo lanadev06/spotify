@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('playlist_music', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('playlist_id');
-            $table->foreign('playlist_id')->references('id')->on('playlists');
-            $table->unsignedBigInteger('music_id');
-            $table->foreign('music_id')->references('id')->on('musics');
+            $table->foreignId('playlist_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('music_id')->index()->constrained()->cascadeOnDelete();
+            $table->primary(['playlist_id', 'music_id']);
         });
     }
 

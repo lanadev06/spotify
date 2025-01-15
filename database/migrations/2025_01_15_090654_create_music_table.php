@@ -13,17 +13,15 @@ return new class extends Migration
     {
         Schema::create('music', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('artists')->nullOnDelete();
-            $table->unsignedBigInteger('album_id');
-            $table->foreign('album_id')->references('id')->on('albums')->nullOnDelete();
+            $table->foreignId('user_id')->index()->constrained()->nullOnDelete();
+            $table->foreignId('artist_id')->index()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->index()->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->string('audio')->nullable();
-            $table->unsignedBigInteger('viewed')->default(0);
-            $table->unsignedBigInteger('downloaded')->default(0);
+            $table->unsignedBigInteger('views')->default(0);
+            $table->unsignedBigInteger('downloads')->default(0);
             $table->unsignedBigInteger('favorites')->default(0);
+            $table->timestamp();
         });
     }
 

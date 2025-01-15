@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_artist', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('artists')->nullOnDelete();
+            $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('artist_id')->index()->constrained()->cascadeOnDelete();
+            $table->primary(['user_id', 'artist_id']);
         });
     }
 
