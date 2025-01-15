@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('artist_id')->index()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->index()->nullable()->constrained()->nullOnDelete();
             $table->string('name');
+            $table->string('image')->nullable();
             $table->string('audio')->nullable();
             $table->unsignedBigInteger('views')->default(0);
             $table->unsignedBigInteger('downloads')->default(0);
