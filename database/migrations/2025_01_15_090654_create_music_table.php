@@ -21,9 +21,9 @@ return new class extends Migration
             $table->foreign('album_id')->references('id')->on('albums')->nullOnDelete();
             $table->string('name');
             $table->string('audio')->nullable();
-            $table->integer('viewed')->default(0);
-            $table->integer('downloaded')->default(0);
-            $table->integer('favorites')->default(0);
+            $table->unsignedBigInteger('viewed')->default(0);
+            $table->unsignedBigInteger('downloaded')->default(0);
+            $table->unsignedBigInteger('favorites')->default(0);
         });
     }
 
