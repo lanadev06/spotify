@@ -19,8 +19,7 @@ class PlaylistFactory extends Factory
     {
         return [
             'user_id' => User::inRandomOrder()->first()->id,
-            'name' => fake()->firstName(),
-            'image' => fake()->imageUrl(),
+            'name' => fake()->city(),
         ];
     }
 }

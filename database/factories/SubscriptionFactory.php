@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,11 @@ class SubscriptionFactory extends Factory
      */
     public function definition(): array
     {
+        $startAt = fake()->dateTimeBetween('-3 months', 'now');
         return [
             'user_id' => User::inRandomOrder()->first()->id,
+            'starts_at' => $startAt,
+            'ends_at' => Carbon::parse($startAt)->addMonth(fake()->numberBetween(1,3)),
         ];
     }
 }

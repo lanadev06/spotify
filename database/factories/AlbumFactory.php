@@ -20,8 +20,7 @@ class AlbumFactory extends Factory
     {
         return [
             'artist_id' => Artist::inRandomOrder()->first()->id,
-            'name' => fake()->firstName(),
-            'image' => fake()->imageUrl(),
+            'name' => fake()->country(),
         ];
     }
 }

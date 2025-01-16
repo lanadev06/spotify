@@ -18,7 +18,6 @@ class ArtistFactory extends Factory
     {
         return [
             'name' => fake()->firstName(),
-            'image' => fake()->imageUrl(),
         ];
     }
 }

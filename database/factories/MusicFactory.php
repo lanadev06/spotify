@@ -24,7 +24,7 @@ class MusicFactory extends Factory
             'artist_id' => Artist::inRandomOrder()->first()->id,
             'album_id' => Album::inRandomOrder()->first()->id,
             'name' => fake()->firstName(),
-            'audio' => fake()->firstName(),
+            'audio' => fake()->streetName(),
             'viewed' => fake()->randomDigit(),
             'downloaded' => fake()->randomDigit(),
             'favorites' => fake()->randomDigit(),
