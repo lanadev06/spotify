@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('image')->nullable();
         });
     }

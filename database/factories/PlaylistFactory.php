@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Playlist;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,19 @@ class PlaylistFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'name' => fake()->city(),
+            'slug' => str()->random(5),
         ];
     }
+
+    public function configure()
+    {
+        return $this->afterMaking(function (Playlist $playlist) {
+
+        })->afterCreating(function (Playlist $playlist) {
+            $playlist->slug = str($playlist->name)->slug() . '-' . $playlist->id;
+            $playlist->update();
+        });
+    }
+
+
 }
